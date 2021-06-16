@@ -10,16 +10,22 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/HomeMainServlet")
 public class HomeMainServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    public HomeMainServlet() {
-        super();
-       
-    }
+	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String name = request.getParameter("name");
+		
+		//들어오는 파라미터를 UTF-8로 해석.
+		request.setCharacterEncoding("UTF-8");
+		
+		// 서블릿이 HTML 파일을 만들 때 UTF-8로 쓰기.
+		response.setCharacterEncoding("UTF-8");
+		
+		// HTML이 UTF-8 형식이라는 것을 브라우저에 알림.
+		response.setContentType("text/html; charset=UTF-8");
+		
+		response.getWriter().append("안녕").append(request.getContextPath());
+		response.getWriter().append(name);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
