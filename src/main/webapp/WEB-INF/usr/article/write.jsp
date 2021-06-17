@@ -4,22 +4,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<!-- 모바일에서도 디자인 축소 방지 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <!-- 데이지 UI 불러오기 -->
 <link
 	href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1/dist/tailwind.min.css"
 	rel="stylesheet" type="text/css" />
 <link href="https://cdn.jsdelivr.net/npm/daisyui@1.3.6/dist/full.css"
 	rel="stylesheet" type="text/css" />
-	
+
+<!-- font.css 연결 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/font.css" />
 
+<!-- common.css 연결 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resource/common.css" />
 
 <title>JspTextBoard</title>
 
 </head>
 <body>
-	<section class="section section-article-write">
+	<section class="section section-article-write px-4">
 		<div class="container mx-auto">
 		<script>
 			let ArticleWrite__submitDone == false;
