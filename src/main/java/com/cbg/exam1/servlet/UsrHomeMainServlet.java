@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 public class UsrHomeMainServlet extends HttpServlet {
 	
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("name");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
 		
 		//들어오는 파라미터를 UTF-8로 해석.
 		request.setCharacterEncoding("UTF-8");
@@ -24,8 +25,6 @@ public class UsrHomeMainServlet extends HttpServlet {
 		// HTML이 UTF-8 형식이라는 것을 브라우저에 알림.
 		response.setContentType("text/html; charset=UTF-8");
 		
-		response.getWriter().append("안녕").append(request.getContextPath());
-		response.getWriter().append(name);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
