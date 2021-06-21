@@ -1,6 +1,7 @@
 package com.cbg.exam1.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,17 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import com.cbg.exam1.dto.Article;
+import com.cbg.mysqlutil.MysqlUtil;
+import com.cbg.mysqlutil.SecSql;
 
 
-@WebServlet("/usr/article/write")
-public class UsrArticleWriteServlet extends HttpServlet {
+@WebServlet("/usr/article/list")
+public class UsrArticleListServlet extends HttpServlet {
 	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -34,7 +31,19 @@ public class UsrArticleWriteServlet extends HttpServlet {
 		// HTML이 UTF-8 형식이라는 것을 브라우저에 알림.
 		response.setContentType("text/html; charset=UTF-8");
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/usr/article/write.jsp");
+		MysqlUtil.setDBInfo("localhost", "sbsst", "sbs123414", "jsp_board");
+
+		MysqlUtil.setDevMode(true);
+		
+		SecSql sql = new SecSql();
+		sql.append("SELECT *");
+		sql.append("FROM article AS A");
+		sql.append("ORDER BY A.id DESC");
+		List<Article> articles = MysqlUtil.selectRows(sql, Article.class);
+		
+		request.setAttribute("articles", articles);
+		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/usr/article/list.jsp");
 		requestDispatcher.forward(request, response);
 	}
 
