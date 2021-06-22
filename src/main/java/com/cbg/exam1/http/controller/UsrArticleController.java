@@ -1,8 +1,14 @@
 package com.cbg.exam1.http.controller;
 
 import com.cbg.exam1.http.Rq;
+import com.cbg.exam1.http.service.ArticleService;
 
 public class UsrArticleController extends Controller {
+	private ArticleService articleService;
+	
+	public UsrArticleController() {
+		articleService = new ArticleService();
+	}
 
 	@Override
 	public void performAction(Rq rq) {
