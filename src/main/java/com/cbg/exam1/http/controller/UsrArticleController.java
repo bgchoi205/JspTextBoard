@@ -1,5 +1,6 @@
 package com.cbg.exam1.http.controller;
 
+import com.cbg.exam1.dto.ResultData;
 import com.cbg.exam1.http.Rq;
 import com.cbg.exam1.http.service.ArticleService;
 
@@ -29,8 +30,20 @@ public class UsrArticleController extends Controller {
 		String title = rq.getParam("title", "");
 		String body = rq.getParam("body", "");
 		
-		rq.printf("title : %s<br>", title);
-		rq.printf("body : %s<br>", body);
+		
+		if(title.length() == 0) {
+			rq.historyBack("title을 입력해주세요.");
+			return;
+		}
+		
+		if(body.length() == 0) {
+			rq.historyBack("body를 입력해주세요.");
+			return;
+		}
+		
+		ResultData writeRd = articleService.write(title, body);
+		
+		rq.printf(writeRd.getMsg());
 		
 	}
 

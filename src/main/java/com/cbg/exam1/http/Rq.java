@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cbg.exam1.util.Ut;
+
 public class Rq {
 	
 	private HttpServletRequest req;
@@ -20,17 +22,17 @@ public class Rq {
 
 	public Rq(HttpServletRequest req, HttpServletResponse resp) {
 		
-		//들어오는 파라미터를 UTF-8로 해석.
+		//�뱾�뼱�삤�뒗 �뙆�씪誘명꽣瑜� UTF-8濡� �빐�꽍.
 		try {
 			req.setCharacterEncoding("UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 				
-		// 서블릿이 HTML 파일을 만들 때 UTF-8로 쓰기.
+		// �꽌釉붾┸�씠 HTML �뙆�씪�쓣 留뚮뱾 �븣 UTF-8濡� �벐湲�.
 		resp.setCharacterEncoding("UTF-8");
 				
-		// HTML이 UTF-8 형식이라는 것을 브라우저에 알림.
+		// HTML�씠 UTF-8 �삎�떇�씠�씪�뒗 寃껋쓣 釉뚮씪�슦���뿉 �븣由�.
 		resp.setContentType("text/html; charset=UTF-8");
 		
 		this.req = req;
@@ -95,6 +97,10 @@ public class Rq {
 		print(str + "\n");
 		
 	}
+	
+	public void printf(String format, Object...args) {
+		print(Ut.f(format, args));
+	}
 
 
 	public void jsp(String jspPath) {
@@ -119,10 +125,13 @@ public class Rq {
 	}
 
 
-	public void printf(String format, Object...args) {
-		print(String.format(format, args));
+	public void historyBack(String msg) {
+		println("<script>");
+		printf("alert('%s');\n", msg);
+		println("history.back();");
+		println("</script>");
+		
 	}
-	
-	
+
 
 }
