@@ -8,11 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cbg.exam1.container.Container;
 import com.cbg.exam1.http.Rq;
 import com.cbg.exam1.http.controller.Controller;
-import com.cbg.exam1.http.controller.UsrArticleController;
 import com.cbg.mysqlutil.MysqlUtil;
-import com.cbg.mysqlutil.SecSql;
 
 @WebServlet("/usr/*")
 public class DispatcherServlet extends HttpServlet {
@@ -34,8 +33,8 @@ public class DispatcherServlet extends HttpServlet {
 		case "usr":
 			switch(rq.getControllerName()) {
 			case "article":
-				controller = new UsrArticleController();
-				
+				controller = Container.usrArticleController;
+				break;
 			}
 			break;
 		}

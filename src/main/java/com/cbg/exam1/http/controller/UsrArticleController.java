@@ -2,18 +2,15 @@ package com.cbg.exam1.http.controller;
 
 import java.util.List;
 
+import com.cbg.exam1.container.Container;
 import com.cbg.exam1.dto.Article;
 import com.cbg.exam1.dto.ResultData;
 import com.cbg.exam1.http.Rq;
 import com.cbg.exam1.http.service.ArticleService;
 
 public class UsrArticleController extends Controller {
-	private ArticleService articleService;
+	private ArticleService articleService = Container.articleService;
 	
-	public UsrArticleController() {
-		articleService = new ArticleService();
-	}
-
 	@Override
 	public void performAction(Rq rq) {
 		
@@ -45,12 +42,12 @@ public class UsrArticleController extends Controller {
 		
 		
 		if(title.length() == 0) {
-			rq.historyBack("titleÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			rq.historyBack("titleì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 			return;
 		}
 		
 		if(body.length() == 0) {
-			rq.historyBack("body¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			rq.historyBack("bodyë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 			return;
 		}
 		

@@ -2,22 +2,20 @@ package com.cbg.exam1.http.service;
 
 import java.util.List;
 
+import com.cbg.exam1.container.Container;
 import com.cbg.exam1.dto.Article;
 import com.cbg.exam1.dto.ResultData;
 import com.cbg.exam1.http.repository.ArticleRepository;
 import com.cbg.exam1.util.Ut;
 
 public class ArticleService {
-	private ArticleRepository articleRepository;
+	private ArticleRepository articleRepository = Container.articleRepository;
 	
-	public ArticleService(){
-		articleRepository = new ArticleRepository();
-	}
 	
 	public ResultData write(String title, String body) {
 		int id = articleRepository.write(title, body);
 		
-		return ResultData.from("S-1", Ut.f("%dπ¯ ∞‘Ω√π∞ ª˝º∫øœ∑·", id),"id", id);
+		return ResultData.from("S-1", Ut.f("%dÎ≤à Í≤åÏãúÎ¨º ÏÉùÏÑ± ÏôÑÎ£å", id),"id", id);
 	}
 
 	public List<Article> getForPrintArticles() {
