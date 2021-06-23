@@ -2,12 +2,14 @@ package com.cbg.exam1.http;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cbg.exam1.dto.Article;
 import com.cbg.exam1.util.Ut;
 
 import lombok.Getter;
@@ -116,6 +118,15 @@ public class Rq {
 		printf("alert('%s');\n", msg);
 		println("history.back();");
 		println("</script>");
+		
+	}
+
+
+
+
+
+	public void setAttr(String attrName, Object attrVlaue) {
+		req.setAttribute(attrName, attrVlaue);
 		
 	}
 
