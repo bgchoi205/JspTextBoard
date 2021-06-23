@@ -41,8 +41,6 @@ public class DispatcherServlet extends HttpServlet {
 		}
 		
 		if(controller != null) {
-			MysqlUtil.setDBInfo("localhost", "sbsst", "sbs123414", "jsp_board");
-			MysqlUtil.setDevMode(true);
 			
 			controller.performAction(rq);
 			
