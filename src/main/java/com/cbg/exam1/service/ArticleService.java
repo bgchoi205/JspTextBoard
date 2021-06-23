@@ -1,11 +1,11 @@
-package com.cbg.exam1.http.service;
+package com.cbg.exam1.service;
 
 import java.util.List;
 
 import com.cbg.exam1.container.Container;
 import com.cbg.exam1.dto.Article;
 import com.cbg.exam1.dto.ResultData;
-import com.cbg.exam1.http.repository.ArticleRepository;
+import com.cbg.exam1.repository.ArticleRepository;
 import com.cbg.exam1.util.Ut;
 
 public class ArticleService {

@@ -6,7 +6,7 @@ import com.cbg.exam1.container.Container;
 import com.cbg.exam1.dto.Article;
 import com.cbg.exam1.dto.ResultData;
 import com.cbg.exam1.http.Rq;
-import com.cbg.exam1.http.service.ArticleService;
+import com.cbg.exam1.service.ArticleService;
 
 public class UsrArticleController extends Controller {
 	private ArticleService articleService = Container.articleService;
@@ -24,6 +24,9 @@ public class UsrArticleController extends Controller {
 		case "doWrite" :
 			actionDoWrite(rq);
 			break;
+		default:
+			rq.println("존재하지 않는 페이지입니다.");
+			break;
 		}
 		
 	}
@@ -39,7 +42,7 @@ public class UsrArticleController extends Controller {
 	private void actionDoWrite(Rq rq) {
 		String title = rq.getParam("title", "");
 		String body = rq.getParam("body", "");
-		
+		String redirectUri = rq.getParam("redirectUri", "../article/list");
 		
 		if(title.length() == 0) {
 			rq.historyBack("title을 입력해주세요.");
@@ -52,8 +55,11 @@ public class UsrArticleController extends Controller {
 		}
 		
 		ResultData writeRd = articleService.write(title, body);
+		int id = (int)writeRd.getBody().get("id");
 		
-		rq.printf(writeRd.getMsg());
+		redirectUri = redirectUri.replace("[NEW_ID]", id + "");
+		
+		rq.replace(writeRd.getMsg(), redirectUri);
 		
 	}
 

@@ -1,4 +1,4 @@
-package com.cbg.exam1.http.repository;
+package com.cbg.exam1.repository;
 
 import java.util.List;
 
