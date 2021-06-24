@@ -1,12 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@ page import="java.util.List" %>
-<%@ page import="com.cbg.exam1.dto.Article" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%
-List<Article> articles = (List<Article>)request.getAttribute("articles");
-%>
 
 <!DOCTYPE html>
 <html>
@@ -48,16 +44,16 @@ List<Article> articles = (List<Article>)request.getAttribute("articles");
 			        <span>게시물 리스트</span>
 		      	</div>
 		      	<div class="px-4 py-4">
-		      		<% for(Article article : articles) { %>
+		      		<c:forEach items="${articles}" var="article">
 		      			<div>
-		      				번호 : <%=article.getId()%><br>
-		      				등록 : <%=article.getRegDate()%><br>
-		      				수정 : <%=article.getUpdateDate()%><br>
-		      				제목 : <%=article.getTitle()%><br>
-		      				내용 : <%=article.getBody()%><br>
+		      				번호 : ${article.id}<br>
+		      				등록 : ${article.regDate}<br>
+		      				수정 : ${article.updateDate}<br>
+		      				제목 : ${article.title}<br>
+		      				내용 : ${article.body}<br>
 		      			</div>
 		      			<hr />
-		      		<% } %>
+		      		</c:forEach>
 		      	</div>
 	      	</div>
 		
