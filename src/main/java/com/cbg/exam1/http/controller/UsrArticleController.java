@@ -7,6 +7,7 @@ import com.cbg.exam1.dto.Article;
 import com.cbg.exam1.dto.ResultData;
 import com.cbg.exam1.http.Rq;
 import com.cbg.exam1.service.ArticleService;
+import com.cbg.exam1.util.Ut;
 
 public class UsrArticleController extends Controller {
 	private ArticleService articleService = Container.articleService;
@@ -27,10 +28,33 @@ public class UsrArticleController extends Controller {
 		case "doWrite" :
 			actionDoWrite(rq);
 			break;
+		case "doDelete" :
+			actionDoDelete(rq);
+			break;
 		default:
 			rq.println("존재하지 않는 페이지입니다.");
 			break;
 		}
+		
+	}
+
+	private void actionDoDelete(Rq rq) {
+		int id = rq.getIntParam("id", 0);
+		if(id == 0) {
+			rq.historyBack("id를 입력해주세요");
+			return;
+		}
+		
+		Article article = articleService.getForPrintArticleById(id);
+		
+		if(article == null) {
+			rq.historyBack(Ut.f("%d번은 없는 게시물 번호입니다.", id));
+			return;
+		}
+		
+		articleService.delete(id);
+		
+		rq.replace(id + "번 게시물 삭제 완료", "../article/list");
 		
 	}
 
@@ -42,6 +66,11 @@ public class UsrArticleController extends Controller {
 		}
 		
 		Article article = articleService.getForPrintArticleById(id);
+		
+		if(article == null) {
+			rq.historyBack(Ut.f("%d번은 없는 게시물 번호입니다.", id));
+			return;
+		}
 		
 		rq.setAttr("article", article);
 		
