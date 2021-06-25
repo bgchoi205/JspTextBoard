@@ -3,7 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:set var="pageTitle" value="게시물 리스트" />
+<c:set var="pageTitle" value="게시물 상세페이지" />
 
 <%@ include file="../part/head.jspf" %>
 	
@@ -15,46 +15,44 @@
 			        <a href="javascript:history.back();" class="cursor-pointer">
 			          <i class="fas fa-chevron-left"></i>
 			        </a>
-			        <span>게시물 리스트</span>
+			        <span>게시물 상세페이지</span>
 		      	</div>
 		      	<div class="px-4 py-4">
-		      		<c:forEach items="${articles}" var="article">
-		      			<c:set var="detailUri" value="../article/detail?id=${article.id}" />
 		      			<div class="py-4">
 			      			<div class="grid gap-3" style="grid-template-columns:100px 1fr;">
-			      				<a href="${detailUri}" class="row-span-7">
+			      				<div class="row-span-7">
 					              <img class="rounded-full w-full" src="https://i.pravatar.cc/250?img=37" alt="">
-					            </a>
-				      			<a href="${detailUri}" class="hover:underline cursor-pointer block">
+					            </div>
+				      			<div class="hover:underline cursor-pointer block">
 						            <span class="badge badge-outline">제목</span>
-						            <div class="line-clamp-3">
+						            <div>
 						              ${article.titleForPrint}
 						            </div>
-					          	</a>
+					          	</div>
 					        </div>
 				          	<div class="mt-3 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-					            <a href="${detailUri}" class="hover:underline">
+					            <div class="hover:underline">
 					              <span class="badge badge-primary">번호</span>
 					              <span>${article.id}</span>
-					            </a>
+					            </div>
 					
-					            <a href="${detailUri}" class="cursor-pointer hover:underline">
+					            <div class="cursor-pointer hover:underline">
 					              <span class="badge badge-accent">작성자</span>
 					              <span>${article.memberId}</span>
-					            </a>
+					            </div>
 					
-					            <a href="${detailUri}" class="hover:underline">
+					            <div class="hover:underline">
 					              <span class="badge">등록날짜</span>
 					              <span class="text-gray-600 text-light">${article.regDate}</span>
-					            </a>
+					            </div>
 					
-					            <a href="${detailUri}" class="hover:underline">
+					            <div class="hover:underline">
 					              <span class="badge">수정날짜</span>
 					              <span class="text-gray-600 text-light">${article.updateDate}</span>
-					            </a>
+					            </div>
 				          	</div>
 				          	
-				          	<a href="${detailUri}" 
+				          	<div 
 				          	class="block mt-3 hover:underline cursor-pointer col-span-1 sm:col-span-2 xl:col-span-3">
 					              <span class="badge badge-outline">본문</span>
 					              
@@ -62,13 +60,21 @@
 					              	<img class="rounded" src="https://picsum.photos/id/237/300/300" alt="" />
 					              </div>
 					              
-					              <div class="line-clamp-3">
+					              <div>
 					                ${article.bodySummaryForPrint}
 					              </div>
-					        </a>
+					        </div>
+					        <div class="btns mt-3">
+								<a href="../article/modify?id=${article.id}" class="btn btn-ghost">
+									<span><i class="fas fa-edit"></i></span>
+									<span>수정</span>
+								</a>
+								<a onclick="if( !confirm('정말 삭제하시겠습니까?') )return false;" href="../article/doDelete?id=${article.id}" class="btn btn-ghost">
+									<span><i class="fas fa-trash-alt"></i></span>
+									<span>삭제</span>
+								</a>
+							</div>
 		      			</div>
-		      			<hr />
-		      		</c:forEach>
 		      	</div>
 	      	</div>
 		
