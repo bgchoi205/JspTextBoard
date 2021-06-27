@@ -33,4 +33,10 @@ public class ArticleService {
 		return ResultData.from("S-1", Ut.f("%d번 게시물 삭제 완료", id),"id", id);
 	}
 
+	public ResultData modify(int id, String title, String body) {
+		articleRepository.modify(id, title, body);
+		
+		return ResultData.from("S-1", Ut.f("%d번 게시물 수정 완료", id),"id", id);
+	}
+
 }
