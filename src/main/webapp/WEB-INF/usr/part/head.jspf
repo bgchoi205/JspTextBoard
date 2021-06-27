@@ -30,52 +30,52 @@
 </head>
 <body>
 
-<header class="top-bar h-20 font-bold">
-	<div class="h-full container mx-auto flex">
-		<a href="#" class="top-bar__logo flex items-center px-4">
-			<span><i class="fas fa-laptop-code"></i></span>
-			&nbsp;
-			<span>모카 커뮤니티</span>
-		</a>
-		<div class="flex-grow"></div>
-		<div class="top-bar__menu-box-1">
-			<ul class="flex h-full">
-				<li class="hover:bg-black hover:text-white hover:underline">
-					<a href="#" class="flex h-full items-center px-4">
-						<span><i class="fas fa-home"></i></span>
-						&nbsp;
-						<span>HOME</span>
-					</a>
-				</li>
-				<li class="hover:bg-black hover:text-white hover:underline">
-					<a href="#" class="flex h-full items-center px-4">
-						<span><i class="far fa-bell"></i></span>
-						&nbsp;
-						<span>NOTICE</span>
-					</a>
-				</li>
-				<li class="hover:bg-black hover:text-white hover:underline">
-					<a href="#" class="flex h-full items-center px-4">
-						<span><i class="far fa-comment-alt"></i></span>
-						&nbsp;
-						<span>FREE</span>
-					</a>
-				</li>
-				<li class="hover:bg-black hover:text-white hover:underline">
-					<a href="../member/login" class="flex h-full items-center px-4">
-						<span><i class="fas fa-sign-in-alt"></i></span>
-						&nbsp;
-						<span>LOGIN</span>
-					</a>
-				</li>
-				<li class="hover:bg-black hover:text-white hover:underline">
-					<a href="#" class="flex h-full items-center px-4">
-						<span><i class="fas fa-user-plus"></i></span>
-						&nbsp;
-						<span>JOIN</span>
-					</a>
-				</li>
-			</ul>
+	<header class="top-bar h-20 font-bold">
+		<div class="h-full container mx-auto flex">
+			<a href="#" class="top-bar__logo flex items-center px-4">
+				<span><i class="fas fa-laptop-code"></i></span>
+				&nbsp;
+				<span>모카 커뮤니티</span>
+			</a>
+			<div class="flex-grow"></div>
+			<div class="top-bar__menu-box-1">
+				<ul class="flex h-full">
+					<li class="hover:bg-black hover:text-white hover:underline">
+						<a href="#" class="flex h-full items-center px-4">
+							<span><i class="fas fa-home"></i></span>
+							&nbsp;
+							<span>HOME</span>
+						</a>
+					</li>
+					<li class="hover:bg-black hover:text-white hover:underline">
+						<a href="#" class="flex h-full items-center px-4">
+							<span><i class="far fa-bell"></i></span>
+							&nbsp;
+							<span>NOTICE</span>
+						</a>
+					</li>
+					<li class="hover:bg-black hover:text-white hover:underline">
+						<a href="#" class="flex h-full items-center px-4">
+							<span><i class="far fa-comment-alt"></i></span>
+							&nbsp;
+							<span>FREE</span>
+						</a>
+					</li>
+					<li class="hover:bg-black hover:text-white hover:underline">
+						<a href="../member/login" class="flex h-full items-center px-4">
+							<span><i class="fas fa-sign-in-alt"></i></span>
+							&nbsp;
+							<span>LOGIN</span>
+						</a>
+					</li>
+					<li class="hover:bg-black hover:text-white hover:underline">
+						<a href="#" class="flex h-full items-center px-4">
+							<span><i class="fas fa-user-plus"></i></span>
+							&nbsp;
+							<span>JOIN</span>
+						</a>
+					</li>
+				</ul>
+			</div>
 		</div>
-	</div>
-</header>
+	</header>

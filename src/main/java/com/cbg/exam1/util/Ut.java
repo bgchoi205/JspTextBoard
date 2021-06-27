@@ -3,6 +3,10 @@ package com.cbg.exam1.util;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import com.cbg.exam1.dto.Member;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class Ut {
 
 	public static String f(String string, Object...args) {
@@ -40,6 +44,16 @@ public class Ut {
 	        }
 
 	        return map;
+	}
+
+	public static String toJson(Object obj, String defaultValue) {
+		ObjectMapper om = new ObjectMapper();
+		
+		try {
+			return om.writeValueAsString(obj);
+		}catch(JsonProcessingException e) {
+			return defaultValue;
+		}
 	}
 
 	

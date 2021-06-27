@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cbg.exam1.dto.Article;
+import com.cbg.exam1.dto.Member;
 import com.cbg.exam1.util.Ut;
 
 import lombok.Getter;
@@ -149,6 +150,19 @@ public class Rq {
 		printf("location.replace('%s');\n", redirectUri);
 		println("</script>");
 		
+	}
+
+
+	public void setSessionAttr(String attrName, String attrValue) {
+		req.getSession().setAttribute(attrName, attrValue);
+	}
+	
+	public void removeSessionAttr(String attrName) {
+		req.getSession().removeAttribute(attrName);
+	}
+	
+	public <T> T getSessionAttr(String attrName) {
+		return (T)req.getSession().getAttribute(attrName);
 	}
 
 

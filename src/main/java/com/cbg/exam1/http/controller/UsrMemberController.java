@@ -1,9 +1,11 @@
 package com.cbg.exam1.http.controller;
 
 import com.cbg.exam1.container.Container;
+import com.cbg.exam1.dto.Member;
 import com.cbg.exam1.dto.ResultData;
 import com.cbg.exam1.http.Rq;
 import com.cbg.exam1.service.MemberService;
+import com.cbg.exam1.util.Ut;
 
 public class UsrMemberController extends Controller {
 	private MemberService memberService = Container.memberService;
@@ -45,6 +47,11 @@ public class UsrMemberController extends Controller {
 		if(loginRd.isFail()) {
 			rq.historyBack(loginRd.getMsg());
 		}
+		
+		Member member = (Member)loginRd.getBody().get("member");
+		
+		rq.setSessionAttr("loginedMemberJson", Ut.toJson(member, ""));
+		rq.replace(loginRd.getMsg(), "../article/list");
 		
 	}
 
