@@ -20,7 +20,7 @@ public class UsrArticleController extends Controller {
 			actionShowList(rq);
 			break;
 		case "detail" :
-			actionDetailList(rq);
+			actionShowDetail(rq);
 			break;
 		case "write" :
 			actionShowWrite(rq);
@@ -64,7 +64,7 @@ public class UsrArticleController extends Controller {
 		
 	}
 
-	private void actionDetailList(Rq rq) {
+	private void actionShowDetail(Rq rq) {
 		int id = rq.getIntParam("id", 0);
 		if(id == 0) {
 			rq.historyBack("id를 입력해주세요");
