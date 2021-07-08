@@ -1,9 +1,11 @@
 package com.cbg.exam1.interceptor;
 
+import com.cbg.exam1.http.Rq;
+
 public class NeedLoginInterceptor extends Interceptor {
 
 	@Override
-	boolean runBeforeAction() {
+	public boolean runBeforeAction(Rq rq) {
 		return true;
 	}
 	

@@ -19,7 +19,6 @@ import com.cbg.mysqlutil.MysqlUtil;
 @WebServlet("/usr/*")
 public class DispatcherServlet extends HttpServlet {
 	
-
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		
@@ -59,8 +58,19 @@ public class DispatcherServlet extends HttpServlet {
 	}
 
 	private boolean runInterceptors(Rq rq) {
-		List<Interceptor> interceptor = new ArrayList<>();
-		return false;
+		if(Container.beforeActionInterceptor.runBeforeAction(rq) == false) {
+			return false;
+		}
+		
+		if(Container.needLoginInterceptor.runBeforeAction(rq) == false) {
+			return false;
+		}
+		
+		if(Container.needLogoutInterceptor.runBeforeAction(rq) == false) {
+			return false;
+		}
+		
+		return true;
 	}
 
 
