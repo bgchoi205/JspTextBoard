@@ -2,18 +2,17 @@ package com.cbg.exam1.http;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.cbg.exam1.dto.Article;
 import com.cbg.exam1.dto.Member;
 import com.cbg.exam1.util.Ut;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 @ToString
@@ -29,6 +28,22 @@ public class Rq {
 	private String controllerName;
 	@Getter
 	private String actionMethodName;
+	
+	@Getter
+	@Setter
+	private boolean isLogined = false;
+
+	@Getter
+	@Setter
+	private int loginedMemberId = 0;
+
+	@Getter
+	@Setter
+	private Member loginedMember = null;
+
+	public boolean isNotLogined() {
+		return isLogined == false;
+	}
 	
 
 	public Rq(HttpServletRequest req, HttpServletResponse resp) {
@@ -171,6 +186,10 @@ public class Rq {
 		}
 		
 		return (T)req.getSession().getAttribute(attrName);
+	}
+	
+	public String getActionPath() {
+		return "/" + controllerTypeName + "/" + controllerName + "/" + actionMethodName;
 	}
 
 
