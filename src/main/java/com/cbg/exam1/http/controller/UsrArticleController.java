@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cbg.exam1.container.Container;
 import com.cbg.exam1.dto.Article;
+import com.cbg.exam1.dto.Member;
 import com.cbg.exam1.dto.ResultData;
 import com.cbg.exam1.http.Rq;
 import com.cbg.exam1.service.ArticleService;
@@ -87,6 +88,7 @@ public class UsrArticleController extends Controller {
 	private void actionShowList(Rq rq) {
 		List<Article> articles = articleService.getForPrintArticles();
 		
+		
 		rq.setAttr("articles", articles);
 		
 		rq.jsp("usr/article/list");
@@ -95,6 +97,8 @@ public class UsrArticleController extends Controller {
 	private void actionDoWrite(Rq rq) {
 		String title = rq.getParam("title", "");
 		String body = rq.getParam("body", "");
+		int memberId = rq.getLoginedMemberId();
+		int boardId = 1;
 		String redirectUri = rq.getParam("redirectUri", "../article/list");
 		
 		if(title.length() == 0) {
@@ -107,7 +111,7 @@ public class UsrArticleController extends Controller {
 			return;
 		}
 		
-		ResultData writeRd = articleService.write(title, body);
+		ResultData writeRd = articleService.write(boardId, memberId, title, body);
 		int id = (int)writeRd.getBody().get("id");
 		
 		redirectUri = redirectUri.replace("[NEW_ID]", id + "");

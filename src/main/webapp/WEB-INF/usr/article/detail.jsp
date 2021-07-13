@@ -38,7 +38,7 @@
 					
 					            <div class="cursor-pointer hover:underline">
 					              <span class="badge badge-accent">작성자</span>
-					              <span>${article.memberId}</span>
+					              <span>${article.extra__writerName}</span>
 					            </div>
 					
 					            <div class="hover:underline">
