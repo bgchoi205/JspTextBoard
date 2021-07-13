@@ -145,6 +145,12 @@ public class UsrArticleController extends Controller {
 			return;
 		}
 		
+		Article article = articleService.getForPrintArticleById(id);
+		if(article == null) {
+			rq.historyBack("존재하지 않는 게시물입니다.");
+			return;
+		}
+		
 		ResultData modifyRd = articleService.modify(id, title, body);
 		
 		rq.replace(modifyRd.getMsg(), redirectUri);
