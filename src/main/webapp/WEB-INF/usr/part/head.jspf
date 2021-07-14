@@ -41,7 +41,7 @@
 			<div class="top-bar__menu-box-1">
 				<ul class="flex h-full">
 					<li class="hover:bg-black hover:text-white hover:underline">
-						<a href="#" class="flex h-full items-center px-4">
+						<a href="../article/list" class="flex h-full items-center px-4">
 							<span><i class="fas fa-home"></i></span>
 							&nbsp;
 							<span>HOME</span>

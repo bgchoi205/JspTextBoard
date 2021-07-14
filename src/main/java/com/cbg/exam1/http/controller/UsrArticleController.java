@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.cbg.exam1.container.Container;
 import com.cbg.exam1.dto.Article;
-import com.cbg.exam1.dto.Member;
 import com.cbg.exam1.dto.ResultData;
 import com.cbg.exam1.http.Rq;
 import com.cbg.exam1.service.ArticleService;
@@ -56,6 +55,13 @@ public class UsrArticleController extends Controller {
 		
 		if(article == null) {
 			rq.historyBack(Ut.f("%d번은 없는 게시물 번호입니다.", id));
+			return;
+		}
+		
+		ResultData actorCanDeleteRd = articleService.actorCanDelete(rq.getLoginedMember(), article);
+		
+		if(actorCanDeleteRd.isFail()) {
+			rq.historyBack(actorCanDeleteRd.getMsg());
 			return;
 		}
 		
@@ -148,6 +154,13 @@ public class UsrArticleController extends Controller {
 		Article article = articleService.getForPrintArticleById(id);
 		if(article == null) {
 			rq.historyBack("존재하지 않는 게시물입니다.");
+			return;
+		}
+		
+		ResultData actorCanModifyRd = articleService.actorCanModify(rq.getLoginedMember(), article);
+		
+		if(actorCanModifyRd.isFail()) {
+			rq.historyBack(actorCanModifyRd.getMsg());
 			return;
 		}
 		
