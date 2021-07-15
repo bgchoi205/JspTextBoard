@@ -51,7 +51,7 @@ public class UsrArticleController extends Controller {
 			return;
 		}
 		
-		Article article = articleService.getForPrintArticleById(id);
+		Article article = articleService.getForPrintArticleById(id, rq.getLoginedMember());
 		
 		if(article == null) {
 			rq.historyBack(Ut.f("%d번은 없는 게시물 번호입니다.", id));
@@ -78,7 +78,7 @@ public class UsrArticleController extends Controller {
 			return;
 		}
 		
-		Article article = articleService.getForPrintArticleById(id);
+		Article article = articleService.getForPrintArticleById(id, rq.getLoginedMember());
 		
 		if(article == null) {
 			rq.historyBack(Ut.f("%d번은 없는 게시물 번호입니다.", id));
@@ -151,7 +151,7 @@ public class UsrArticleController extends Controller {
 			return;
 		}
 		
-		Article article = articleService.getForPrintArticleById(id);
+		Article article = articleService.getForPrintArticleById(id, rq.getLoginedMember());
 		if(article == null) {
 			rq.historyBack("존재하지 않는 게시물입니다.");
 			return;
@@ -177,7 +177,7 @@ public class UsrArticleController extends Controller {
 			return;
 		}
 		
-		Article article = articleService.getForPrintArticleById(id);
+		Article article = articleService.getForPrintArticleById(id, rq.getLoginedMember());
 		
 		if(article == null) {
 			rq.historyBack(Ut.f("%d번은 없는 게시물 번호입니다.", id));

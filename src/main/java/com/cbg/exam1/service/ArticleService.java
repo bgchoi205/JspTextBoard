@@ -24,8 +24,18 @@ public class ArticleService {
 		return articleRepository.getForPrintArticles();
 	}
 
-	public Article getForPrintArticleById(int id) {
-		return articleRepository.getForPrintArticleById(id);
+	public Article getForPrintArticleById(int id, Member actor) {
+		Article article =  articleRepository.getForPrintArticleById(id);
+		
+		if(actor != null) {
+			ResultData actorCanModifyRd = actorCanModify(actor, article);
+			ResultData actorCanDeleteRd = actorCanDelete(actor, article);
+			
+			article.setExtra__actorCanModify(actorCanModifyRd.isSuccess());
+			article.setExtra__actorCanDelete(actorCanDeleteRd.isSuccess());
+		}
+		
+		return article;
 	}
 
 	public ResultData delete(int id) {
