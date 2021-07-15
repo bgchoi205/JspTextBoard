@@ -92,13 +92,29 @@ public class UsrArticleController extends Controller {
 	}
 
 	private void actionShowList(Rq rq) {
+		int page = rq.getIntParam("page", 1);
+		int articleCountInAPage = 5;
 		
-		List<Article> articles = articleService.getForPrintArticles();
+		List<Article> articles = articleService.getForPrintArticles(page, articleCountInAPage);
 
-		int articlesCount = articleService.getArticlesCount();
+		int pageArm = 10;
+		
+		int totalArticlesCount = articleService.getArticlesCount();
+		int totalPage = (int)Math.ceil((double)totalArticlesCount / articleCountInAPage);
+		int curPageBlock = (int)Math.ceil((double)page / pageArm);
+		int startPage = 1 + (curPageBlock - 1) * pageArm;
+		int endPage = startPage + pageArm - 1;
+		if(endPage > totalPage) {
+			endPage = totalPage;
+		}
 		
 		rq.setAttr("articles", articles);
-		rq.setAttr("articlesCount", articlesCount);
+		rq.setAttr("page", page);
+		rq.setAttr("pageArm", pageArm);
+		rq.setAttr("totalArticlesCount", totalArticlesCount);
+		rq.setAttr("totalPage", totalPage);
+		rq.setAttr("startPage", startPage);
+		rq.setAttr("endPage", endPage);
 		
 		rq.jsp("usr/article/list");
 	}

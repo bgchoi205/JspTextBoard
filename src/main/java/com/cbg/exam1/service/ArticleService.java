@@ -19,9 +19,10 @@ public class ArticleService {
 		return ResultData.from("S-1", Ut.f("%d번 게시물 생성 완료", id),"id", id);
 	}
 
-	public List<Article> getForPrintArticles() {
+	public List<Article> getForPrintArticles(int page, int articleCountInAPage) {
+		int startNumber = (page  - 1) * articleCountInAPage;
 		
-		return articleRepository.getForPrintArticles();
+		return articleRepository.getForPrintArticles(startNumber, articleCountInAPage);
 	}
 
 	public Article getForPrintArticleById(int id, Member actor) {

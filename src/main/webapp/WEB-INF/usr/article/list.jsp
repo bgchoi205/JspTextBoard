@@ -19,7 +19,7 @@
 		      	</div>
 		      	<div class="px-4 py-4">
 		      		<span>
-		      			게시물 수 : ${articlesCount}
+		      			게시물 수 : ${totalArticlesCount}
 		      		</span>
 		      	</div>
 		      	<hr />
@@ -75,6 +75,21 @@
 		      			</div>
 		      			<hr />
 		      		</c:forEach>
+		      	</div>
+		      	<div class="px-4 py-4">
+		      		<div class="flex justify-center">
+		      			<c:if test="${startPage > pageArm}">
+		      				<a href="?page=${startPage - 1}"><span>이전</span></a>
+		      			</c:if>
+		      			<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
+		      				<a href="?page=${i}" class="px-1">
+		      					<span>${i}</span>
+		      				</a>
+		      			</c:forEach>
+		      			<c:if test="${endPage < totalPage}">
+		      				<a href="?page=${endPage + 1}"><span>다음</span></a>
+		      			</c:if>
+		      		</div>
 		      	</div>
 	      	</div>
 		
