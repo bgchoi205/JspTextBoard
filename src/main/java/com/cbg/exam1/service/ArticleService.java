@@ -72,4 +72,8 @@ public class ArticleService {
 		return ResultData.from("S-1", Ut.f("삭제 가능"));
 	}
 
+	public int getArticlesCount() {
+		return articleRepository.getArticlesCount();
+	}
+
 }

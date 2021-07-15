@@ -18,6 +18,12 @@
 			        <span>게시물 리스트</span>
 		      	</div>
 		      	<div class="px-4 py-4">
+		      		<span>
+		      			게시물 수 : ${articlesCount}
+		      		</span>
+		      	</div>
+		      	<hr />
+		      	<div class="px-4 py-4">
 		      		<c:forEach items="${articles}" var="article">
 		      			<c:set var="detailUri" value="../article/detail?id=${article.id}" />
 		      			<div class="py-4">
